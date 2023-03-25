@@ -3,7 +3,7 @@ import argparse
 import smtplib
 import pandas as pd
 import mysql.connector
-import matplotlib.pyplot as plt
+from rich import print
 from rich.console import Console
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException, TimeoutException
@@ -34,7 +34,7 @@ def get_driver():
         # Create and return Chrome driver instance
         return webdriver.Chrome(options=options, service=path)
     except WebDriverException as e:
-        print(f"An error occurred while trying to create the Chrome driver: {e}")
+        print(f"[bold red]An error occurred while trying to create the Chrome driver:[/bold red] {e}")
         return None
 
 def fetch_data(driver, country):
@@ -77,7 +77,7 @@ def fetch_data(driver, country):
 
         return data
     except (WebDriverException, TimeoutException) as e:
-        print(f"An error occurred while trying to fetch data: {e}")
+        print(f"[bold red]An error occurred while trying to fetch data:[/bold red] {e}")
         return []
 
 def save_to_csv(data, output_file):
@@ -96,7 +96,7 @@ def save_to_csv(data, output_file):
         df.to_csv(output_file, index=False)
         return df
     except Exception as e:
-        print(f"An error occurred while trying to save data to CSV file: {e}")
+        print(f"[bold red]An error occurred while trying to save data to CSV file:[/bold red] {e}")
 
 def save_to_db(data):
     """
@@ -128,7 +128,7 @@ def save_to_db(data):
         console.print('\n[bold green]Added to database[/bold green]')
         console.print(f'{len(data)} rows inserted into "matches" table.')
     except Exception as e:
-        print(f"An error occurred while trying to save data to MySQL")
+        console.print(f"[bold red]An error occurred while trying to save data to MySQL[/bold red]")
 
 
 def send_email(sender_email, sender_password, recipient_email, subject, body):
@@ -145,6 +145,17 @@ def send_email(sender_email, sender_password, recipient_email, subject, body):
     Returns:
         None
     """
+    if not isinstance(sender_email, str):
+        raise TypeError("sender_email must be a string")
+    if not isinstance(sender_password, str):
+        raise TypeError("sender_password must be a string")
+    if not isinstance(recipient_email, str):
+        raise TypeError("recipient_email must be a string")
+    if not isinstance(subject, str):
+        raise TypeError("subject must be a string")
+    if not isinstance(body, str):
+        raise TypeError("body must be a string")
+
     try:
         # Create SMTP session
         server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -162,9 +173,10 @@ def send_email(sender_email, sender_password, recipient_email, subject, body):
         # Close SMTP session
         server.quit()
 
-        print("Email sent successfully")
+        console = Console()
+        console.print("[bold green]Email sent successfully[/bold green]")
     except Exception as e:
-        print(f"An error occurred while trying to send email: {e}")
+        print(f"[bold red]An error occurred while trying to send email:[/bold red] {e}")
 
 def main():
     """
@@ -175,13 +187,17 @@ def main():
     """
     # Add command-line arguments
     parser = argparse.ArgumentParser(description='Fetch and save match data from website')
-    parser.add_argument('-c', '--country', type=str, default='Brazil', help='Specify the country name (default: Brazil)')
+    parser.add_argument('-c', '--country', type=str, default='England', help='Specify the country name (default: England)')
     parser.add_argument('-o', '--output', type=str, default='matches.csv', help='Specify the output filename (default: matches.csv)')
+    parser.add_argument('-s', '--save-to-db', action='store_true', help='Save the data to a MySQL database (default: False)')
+    parser.add_argument('-e', '--send-email', action='store_true', help='Send an email notification once the data has been scraped (default: False)')
     args = parser.parse_args()
 
     # Get command-line arguments
     country = args.country
     output_file = args.output
+    save_to_db = args.save_to_db
+    send_email_flag = args.send_email
 
     # Read existing data from CSV file
     try:
@@ -202,40 +218,18 @@ def main():
 
     # Check if new data was added to the CSV file
     if len(df) > len(existing_df):
+        # Save data to MySQL database
+        if save_to_db:
+            save_to_db(data)
+
         # Send email notification
-        sender_email = "your_email@gmail.com"
-        sender_password = "your_email_password"
-        recipient_email = "recipient_email@example.com"
-        subject = "New match data available"
-        body = "New match data has been added to the CSV file. Check the website for more details."
-        send_email(sender_email, sender_password, recipient_email, subject, body)
-
-    # Calculate average score of each team
-    avg_score = df.groupby('home_team')['score'].apply(lambda x: x.str.split(':').apply(lambda y: int(y[0])).mean())
-
-    # Calculate total number of goals scored by each team
-    total_goals = df.groupby('home_team')['score'].apply(lambda x: x.str.split(':').apply(lambda y: sum(map(int, y))).sum())
-
-    # Print data analysis
-    print('\nAverage score of each team:')
-    print(avg_score)
-    print('\nTotal number of goals scored by each team:')
-    print(total_goals)
-
-    # Create a bar graph of the number of matches played by each team
-    team_counts = df['home_team'].value_counts()
-    team_counts.plot(kind='bar')
-    plt.title('Number of Matches Played by Each Team')
-    plt.xlabel('Team')
-    plt.ylabel('Number of Matches')
-    plt.show()
-    
-    # Create a pie chart of the percentage of wins, losses, and draws for each team
-    results = df['score'].apply(lambda x: 'Win' if int(x.split(':')[0]) > int(x.split(':')[1]) else 'Loss' if int(x.split(':')[0]) < int(x.split(':')[1]) else 'Draw')
-    results_counts = pd.concat([df['home_team'], results]).value_counts()
-    plt.pie(results_counts, labels=results_counts.index, autopct='%1.1f%%')
-    plt.title('Results for Each Team')
-    plt.show()
+        if send_email_flag:
+            sender_email = "fe861282@gmail.com"
+            sender_password = "h2os&vlo0AzqSh(+??cwE2dyK3FWnV"
+            recipient_email = "lukbr25@gmail.com"
+            subject = "New match data available"
+            body = "New match data has been added to the CSV file. Check the website for more details."
+            send_email(sender_email, sender_password, recipient_email, subject, body)
 
 if __name__ == '__main__':
     main()
