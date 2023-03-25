@@ -12,6 +12,18 @@ To use this script, you will need the following:
 - The following Python modules: `pandas`, `mysql-connector-python`, `selenium`, `beautifulsoup4`, `rich`
 - Chrome browser and the corresponding ChromeDriver
 
+## Installation
+- Install Python 3.6 or higher from the [official website](https://www.python.org/downloads/).
+
+- Install the required Python modules using pip:
+``` python
+pip install pandas mysql-connector-python selenium beautifulsoup4 rich
+```
+- Download the Chrome browser from the [official website](https://www.google.com/chrome/).
+
+- Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads).
+
+### Virtualenv
 It is recommended to use a virtual environment for running the Match Data Scraper. If you do not have a virtual environment set up, follow these steps:
 
 - Install virtualenv by running the following command: 
@@ -36,17 +48,6 @@ On Windows:
 ``` python
 pip install -r requirements.txt
 ```
-
-## Installation
-- Install Python 3.6 or higher from the [official website](https://www.python.org/downloads/).
-
-- Install the required Python modules using pip:
-``` python
-pip install pandas mysql-connector-python selenium beautifulsoup4 rich
-```
-- Download the Chrome browser from the [official website](https://www.google.com/chrome/).
-
-- Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads).
 
 ## Usage
 - Open the script in your Python editor of choice.
