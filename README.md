@@ -1,6 +1,9 @@
 # Match Data Scraper
 This Python script uses Selenium and BeautifulSoup to scrape match data from a website and save it to a CSV file or a MySQL database. It also includes an option to send an email notification once the data has been scraped.
 
+## Preview
+<img width=100% src="">
+
 ## Getting Started
 ## Prerequisites
 To use this script, you will need the following:
