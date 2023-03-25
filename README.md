@@ -5,7 +5,7 @@ This Python script uses Selenium and BeautifulSoup to scrape match data from a w
 <img width=100% src="">
 
 ## Getting Started
-## Prerequisites
+### Prerequisites
 To use this script, you will need the following:
 
 - Python 3.6 or higher
@@ -38,15 +38,15 @@ pip install -r requirements.txt
 ```
 
 ## Installation
-- Install Python 3.6 or higher from the official website: https://www.python.org/downloads/
+- Install Python 3.6 or higher from the [official website](https://www.python.org/downloads/).
 
 - Install the required Python modules using pip:
 ``` python
 pip install pandas mysql-connector-python selenium beautifulsoup4 rich
 ```
-- Download the Chrome browser from the official website: https://www.google.com/chrome/
+- Download the Chrome browser from the [official website](https://www.google.com/chrome/).
 
-- Download the ChromeDriver from the official website: https://chromedriver.chromium.org/downloads
+- Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads).
 
 ## Usage
 - Open the script in your Python editor of choice.
@@ -58,10 +58,11 @@ python match_data_scraper.py [options]
 
 Replace [options] with any of the following:
 
-- `-c` or `--country`: Specify the name of the country to scrape data for (default: "England").
-- `-o` or `--output`: Specify the name of the output file (default: "matches.csv").
-- `-s` or `--save-to-db`: Save the data to a MySQL database (default: False).
-- `-e` or `--send-email`: Send an email notification once the data has been scraped (default: False).
+- `-c` or `--country`: Specify the name of the country to scrape data for (default: `"England"`).
+- `-o` or `--output`: Specify the name of the output file (default: `"matches.csv"`).
+- `-s` or `--save-to-db`: Save the data to a MySQL database (default: `False`).
+- `-e` or `--send-email`: Send an email notification once the data has been scraped (default: `False`).
+
 For example:
 ``` python
 python match_data_scraper.py -c "Spain" -o "spain_matches.csv" -s -e
