@@ -30,10 +30,10 @@ python match_data_scraper.py [options]
 
 Replace [options] with any of the following:
 
-- -c or --country: Specify the name of the country to scrape data for (default: "England").
-- -o or --output: Specify the name of the output file (default: "matches.csv").
-- -s or --save-to-db: Save the data to a MySQL database (default: False).
-- -e or --send-email: Send an email notification once the data has been scraped (default: False).
+- `-c` or `--country`: Specify the name of the country to scrape data for (default: "England").
+- `-o` or `--output`: Specify the name of the output file (default: "matches.csv").
+- `-s` or `--save-to-db`: Save the data to a MySQL database (default: False).
+- `-e` or `--send-email`: Send an email notification once the data has been scraped (default: False).
 For example:
 ``` python
 python match_data_scraper.py -c "Spain" -o "spain_matches.csv" -s -e
@@ -41,10 +41,10 @@ python match_data_scraper.py -c "Spain" -o "spain_matches.csv" -s -e
 This command will scrape match data for Spain, save it to a MySQL database, and send an email notification.
 
 ## Contributing 
-If you have any suggestions for improving the program or finding bugs, please submit an [issue](https://github.com/TheHumanoidTyphoon/) or pull request on the [GitHub repository](https://github.com/TheHumanoidTyphoon/).
+If you have any suggestions for improving the program or finding bugs, please submit an [issue](https://github.com/TheHumanoidTyphoon/match-data-scraper/issues) or pull request on the [GitHub repository](https://github.com/TheHumanoidTyphoon/match-data-scraper).
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/TheHumanoidTyphoon/match-data-scraper/blob/main/LICENSE) file for details.
 
 ## Acknowledgments
 Adam Choi for providing the website used to scrape the data.
