@@ -12,6 +12,31 @@ To use this script, you will need the following:
 - The following Python modules: `pandas`, `mysql-connector-python`, `selenium`, `beautifulsoup4`, `rich`
 - Chrome browser and the corresponding ChromeDriver
 
+It is recommended to use a virtual environment for running the Match Data Scraper. If you do not have a virtual environment set up, follow these steps:
+
+- Install virtualenv by running the following command: 
+``` python
+pip install virtualenv
+```
+- Create a new virtual environment by running the command: 
+``` python
+virtualenv venv
+```
+- Activate the virtual environment by running the command:
+
+On Linux/Mac:
+``` python
+source venv/bin/activate
+```
+On Windows:
+``` python
+./venv/Scripts/activate
+```
+- Install the required dependencies using pip: 
+``` python
+pip install -r requirements.txt
+```
+
 ## Installation
 - Install Python 3.6 or higher from the official website: https://www.python.org/downloads/
 
@@ -50,4 +75,4 @@ If you have any suggestions for improving the program or finding bugs, please su
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/TheHumanoidTyphoon/match-data-scraper/blob/main/LICENSE) file for details.
 
 ## Acknowledgments
-Adam Choi for providing the website used to scrape the data.
+[Adam Choi](https://www.adamchoi.co.uk/) for providing the website used to scrape the data.
