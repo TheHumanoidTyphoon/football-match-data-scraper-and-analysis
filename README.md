@@ -4,23 +4,23 @@ This Python script enables you to scrape and analyze football match data. It's d
 ## Getting Started
 ### Prerequisites
 Before running the script, make sure you have installed the following packages:
-- pandas
-- rich
-- matplotlib
-- mysql-connector-python
-- selenium
-- beautifulsoup4
+- `pandas`
+- `rich`
+- `matplotlib`
+- `mysql-connector-python`
+- `selenium`
+- `beautifulsoup4`
 
 You will also need the Chrome browser and the corresponding ChromeDriver.
 
 ## Installation
-- Install Python 3.6 or higher from the official website.
+- Install Python 3.6 or higher from the [official website](https://www.python.org/downloads/).
 - Install the required Python modules using pip:
 ``` python
 pip install pandas rich matplotlib mysql-connector-python selenium beautifulsoup4
 ```
-- Download the Chrome browser from the official website.
-- Download the ChromeDriver from the official website.
+- Download the Chrome browser from the [official website](https://www.google.com/chrome/).
+- Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads).
 
 ### Virtualenv
 It is recommended to use a virtual environment for running the Match Data Scraper. If you do not have a virtual environment set up, follow these steps:
@@ -80,15 +80,15 @@ This Python script analyzes football match data. The script is designed to be ru
 To use the Football Match Data Analysis script:
 
 - Make sure you have scraped some match data using the Match Data Scraper script, or use the provided `input_matches_file.csv` file.
-- Modify the script as needed (e.g. change the database credentials, email settings, etc.).
+- Modify the script as needed (e.g. change the plot type, email settings, etc.).
 - Run the script using the command:
 ``` python
 python footanalysis.py [input_file][output_file][plot_type]
 ```
 Replace [options] with the following arguments:
-- `-i` or `--input_file`: The path to the input CSV file. Default value: `input_matches_file.csv`.
-- `-o` or `--output_file`: The path to the output CSV file. Default value: `output_matches_file.csv`.
-- `-p` or `--plot_type`: The type of plot to display. Possible values are: all, percentage, and `total_goals`. Default value: `all`.
+- `-i` or `--input_file`: The path to the input CSV file (default: `input_matches_file.csv`).
+- `-o` or `--output_file`: The path to the output CSV file (default: `output_matches_file.csv`).
+- `-p` or `--plot_type`: The type of plot to display. Possible values are: all, percentage, and `total_goals` (default: `all`).
 - `-s` or `--show_plot`: If present, only shows the plot and does not perform any data analysis.
 for example:
 ``` python
@@ -101,10 +101,10 @@ python footanalysis.py -i input.csv -o output.csv -p total_goals -s
 This command will perform data analysis on the `input.csv` file, create a `output.csv` file containing the analyzed data, and display a line chart showing the total number of goals scored in each match.
 
 ## Contributing 
-If you have any suggestions for improving the program or finding bugs, please submit an [issue](https://github.com/TheHumanoidTyphoon/match-data-scraper/issues) or pull request on the [GitHub repository](https://github.com/TheHumanoidTyphoon/match-data-scraper).
+If you have any suggestions for improving the program or finding bugs, please submit an [issue](https://github.com/TheHumanoidTyphoon/football-match-data-scraper-and-analysis/issues) or pull request on the [GitHub repository](https://github.com/TheHumanoidTyphoon/match-data-scraper).
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/TheHumanoidTyphoon/match-data-scraper/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/TheHumanoidTyphoon/football-match-data-scraper-and-analysis/blob/main/LICENSE) file for details.
 
 ## Acknowledgments
 [Adam Choi](https://www.adamchoi.co.uk/) for providing the website used to scrape the data.
