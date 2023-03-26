@@ -1,27 +1,26 @@
-# Match Data Scraper
-This Python script uses Selenium and BeautifulSoup to scrape match data from a website and save it to a CSV file or a MySQL database. It also includes an option to send an email notification once the data has been scraped.
-
-## Preview
-<img width=100% src="">
+# Football Match Data Scraper and Analysis
+This is a Python script for scraping and analyzing football match data. The script is designed to be run from the command line and provides various options for scraping, analyzing, and visualizing the data.
 
 ## Getting Started
 ### Prerequisites
-To use this script, you will need the following:
+Before running the script, make sure you have installed the following packages:
+- pandas
+- rich
+- matplotlib
+- mysql-connector-python
+- selenium
+- beautifulsoup4
 
-- Python 3.6 or higher
-- The following Python modules: `pandas`, `mysql-connector-python`, `selenium`, `beautifulsoup4`, `rich`
-- Chrome browser and the corresponding ChromeDriver
+You will also need the Chrome browser and the corresponding ChromeDriver.
 
 ## Installation
-- Install Python 3.6 or higher from the [official website](https://www.python.org/downloads/).
-
+- Install Python 3.6 or higher from the official website.
 - Install the required Python modules using pip:
 ``` python
-pip install pandas mysql-connector-python selenium beautifulsoup4 rich
+pip install pandas rich matplotlib mysql-connector-python selenium beautifulsoup4
 ```
-- Download the Chrome browser from the [official website](https://www.google.com/chrome/).
-
-- Download the ChromeDriver from the [official website](https://chromedriver.chromium.org/downloads).
+- Download the Chrome browser from the official website.
+- Download the ChromeDriver from the official website.
 
 ### Virtualenv
 It is recommended to use a virtual environment for running the Match Data Scraper. If you do not have a virtual environment set up, follow these steps:
@@ -49,14 +48,18 @@ On Windows:
 pip install -r requirements.txt
 ```
 
-## Usage
+## Match Data Scraper
+This Python script uses Selenium and BeautifulSoup to scrape match data from a website and save it to a CSV file or a MySQL database. It also includes an option to send an email notification once the data has been scraped.
+
+### Usage
+To use the Match Data Scraper script:
+
 - Open the script in your Python editor of choice.
 - Modify the script as needed (e.g. change the database credentials, email settings, etc.).
 - Run the script using the command:
 ``` python
-python match_data_scraper.py [options]
+python footscraping.py [options]
 ```
-
 Replace [options] with any of the following:
 
 - `-c` or `--country`: Specify the name of the country to scrape data for (default: `"England"`).
@@ -66,9 +69,36 @@ Replace [options] with any of the following:
 
 For example:
 ``` python
-python match_data_scraper.py -c "Spain" -o "spain_matches.csv" -s -e
+python footscraping.py -c Spain -o spain_matches.csv -s -e
 ```
 This command will scrape match data for Spain, save it to a MySQL database, and send an email notification.
+
+## Football Match Data Analysis
+This Python script analyzes football match data. The script is designed to be run from the command line and provides various options for analyzing and visualizing the data.
+
+### Usage
+To use the Football Match Data Analysis script:
+
+- Make sure you have scraped some match data using the Match Data Scraper script, or use the provided `input_matches_file.csv` file.
+- Modify the script as needed (e.g. change the database credentials, email settings, etc.).
+- Run the script using the command:
+``` python
+python footanalysis.py [input_file][output_file][plot_type]
+```
+Replace [options] with the following arguments:
+- `-i` or `--input_file`: The path to the input CSV file. Default value: `input_matches_file.csv`.
+- `-o` or `--output_file`: The path to the output CSV file. Default value: `output_matches_file.csv`.
+- `-p` or `--plot_type`: The type of plot to display. Possible values are: all, percentage, and `total_goals`. Default value: `all`.
+- `-s` or `--show_plot`: If present, only shows the plot and does not perform any data analysis.
+for example:
+``` python
+python footanalysis.py -i input.csv -o output.csv -p percentage
+```
+This command will perform data analysis on the `input.csv` file, create a `output.csv` file containing the analyzed data, and display a bar chart showing the percentage of wins, draws, and losses for each team.
+``` python
+python footanalysis.py -i input.csv -o output.csv -p total_goals -s
+```
+This command will perform data analysis on the `input.csv` file, create a `output.csv` file containing the analyzed data, and display a line chart showing the total number of goals scored in each match.
 
 ## Contributing 
 If you have any suggestions for improving the program or finding bugs, please submit an [issue](https://github.com/TheHumanoidTyphoon/match-data-scraper/issues) or pull request on the [GitHub repository](https://github.com/TheHumanoidTyphoon/match-data-scraper).
