@@ -1,5 +1,5 @@
 # Football Match Data Scraper and Analysis
-This Python script enables you to scrape and analyze football match data. It's designed to be executed from the command line and offers a range of options for data scraping, analysis, and visualization. The script empowers you to access a wide variety of football match data and analyze it in different ways. Additionally, you can use the script to create visualizations that help you gain insights from the .
+This Python script enables you to scrape and analyze football match data. It's designed to be executed from the command line and offers a range of options for data scraping, analysis, and visualization. The script empowers you to access a wide variety of football match data and analyze it in different ways. Additionally, you can use the script to create visualizations that help you gain insights from the data.
 
 ## Getting Started
 ### Prerequisites
